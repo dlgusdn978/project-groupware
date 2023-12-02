@@ -16,7 +16,7 @@ drop table Team;
 drop table UserSchedule;
 drop table UserReview;
 drop table Student;
-drop table Professor;
+# drop table Professor;
 drop table User;
 drop table UserEmail;
 
@@ -159,8 +159,8 @@ allDay boolean,
 UserID int not null,
 foreign key (UserID) references User(UserID) on delete cascade on update cascade
 );
-select date_format(ScheduleStartDate,'%Y-%M-%D %H:%i') as date from UserSchedule;
-select date_format(ScheduleEndDate,'%Y-%M-%D %H:%i') as date from UserSchedule;
+# select date_format(ScheduleStartDate,'%Y-%M-%D %H:%i') as date from UserSchedule;
+# select date_format(ScheduleEndDate,'%Y-%M-%D %H:%i') as date from UserSchedule;
 
 create table TeamUser(
 UserID int not null,
@@ -239,10 +239,10 @@ CREATE
     DELETE FROM Student WHERE LoginDate <= DATE_SUB(NOW(), INTERVAL 6 month); 
     
 #강의실예약 하루마다 비우기
-CREATE
-	EVENT UserReservationDelete ON SCHEDULE EVERY 1 day STARTS '2021-05-30'
-    DO
-    DELETE FROM User UserReservation WHERE ReservationDate <= DATE_SUB(NOW(), INTERVAL 1 day);
+# CREATE
+# 	EVENT UserReservationDelete ON SCHEDULE EVERY 1 day STARTS '2021-05-30'
+#     DO
+#     DELETE FROM User UserReservation WHERE ReservationDate <= DATE_SUB(NOW(), INTERVAL 1 day);
  
 #한 학기 지나면 팀 지우기
 CREATE
